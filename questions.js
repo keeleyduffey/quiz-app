@@ -51,7 +51,7 @@ const questionArray = [
 		altText: 'Phoebe calling herself Princess Consuela Bananahammock'
 	},{
 		questionNum: 5,
-		question: 'What does Paul Rudd say he will change his name to in retaliation?',
+		question: 'What does Mike say he will change his name to in response?',
 		options: [
 			'Smoky Smokerson',
 			'Ken Adams',
@@ -99,7 +99,7 @@ const questionArray = [
 		altText: "David who moves to Minsk"
 	},{
 		questionNum: 9,
-		question: 'What is the occupation of the Ross lookalike who Rachel dates (Russ)?',
+		question: 'What is the occupation of the Ross lookalike (Russ) who Rachel dates?',
 		options: [
 			'Pathologist',
 			'Physician',

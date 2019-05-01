@@ -53,7 +53,10 @@ table {
   font-size: 20px;
 }
 
-
+body {
+  background: url('https://i.pinimg.com/originals/5f/e0/89/5fe0896b371bdcb580cc02126745df3b.jpg');
+  min-height: 100vh;
+}
 
 h1, h2, h3 {
   text-align: center;
@@ -70,47 +73,58 @@ h2 {
   margin-bottom: 50px;
 }
 
-.main-container {
+.status-container,
+.content-container {
   display: none;
+  text-align: center;
 }
 
 .logo,
 .img {
   font-size: 20px;
   display: block;
-  padding: 50px;
   text-align: center;
   width: 70%;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
-.img-greybox {
-  height: 250px;
-  width: 250px;
-}
-
-.status-container {
-  height: 100px;
-  /*display: none;*/
+.img {
+  max-width: 400px;
+  max-height: 350px;
 }
 
 .status-label {
   font-weight: bold;
-  padding-right: 10px;
 }
 
-.init-btn {
-  margin-top: 100px;
-}
-
-.content-wrapper {
-  height: 450px;
-  padding: 3vh 3vw;
-}
 
 fieldset {
   text-align: left;
   margin-top: 40px; 
+}
+
+.content-wrapper {
+  height: 478px;
+}
+
+/*.selected {
+  background: #dfecec;
+}
+*/
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  vertical-align: middle;
+  border-radius: 100%;
+  border: 5px solid #ffffff;
+  transition: 0.2s all;
+  margin: 0 20px 6px 0;
+  width: 24px;
+  height: 24px;
+}
+input:checked {
+    border: 8px solid #fca236;
 }
 
 .option-wrapper {
@@ -119,18 +133,25 @@ fieldset {
   margin: 5px auto;
   display: block;
   width: 85%;
+  background: #dfecec;
 }
 
-header, section {
-  min-height: 100vh;
-  padding: 50px;
+.option-wrapper:hover,
+.option-wrapper:active,
+.option-wrapper:focus {
+  transition: 500ms all;
+  background: #00bcd4;
 }
 
-.status-container,
-section {
+header, main {
+  padding: 20px;
+}
+
+.status-container {
   margin: 0 auto;
   padding: 3vh 3vw;
   text-align: center;
+  height: 100px;
 }
 
 li {
@@ -143,16 +164,34 @@ li {
 }
 
 button {
+  border: none;
+  background: #d9c3a3; /*#dfecec;*/
   display: block;
   margin: 10px auto;
-}
-
-button {
   width: 80%;
   padding: 20px;
   font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  transition: 500ms all;
 }
 
-span {
-  padding: 30px;
+button:hover,
+button:active,
+button:focus {
+  background: #fca236;
+  border: none;
 }
+
+@media screen and (max-width: 650px) {
+  .status-container li {
+    display: block;
+  } 
+}
+
+@media screen and (max-width: 450px) {
+  .option-wrapper {
+    width: 100%;
+  }
+ }
