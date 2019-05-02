@@ -11,8 +11,8 @@ const questionArray = [
 			'0',
 		],
 		correctAnswer: '3',
-		imageLink: 'https://media.giphy.com/media/13Al4Z5L69oiPe/giphy.gif',
-		altText: 'Monica talking about Ross divorcing again'
+		imageLink: 'https://media.giphy.com/media/GvRdjwAffY4QE/giphy.gif',
+		altText: 'Ross talking about his divorces'
 	},{
 		questionNum: 2,
 		question: 'Which soap opera does Joey star in?',
@@ -123,5 +123,23 @@ const questionArray = [
 		altText: 'Chandler asking if he said something out loud.'
 	},
 ];
+
+const finalScreenInfo = {
+	great: {
+		message: 'Wow! Great Job!',
+		imageLink: 'https://media.giphy.com/media/31lPv5L3aIvTi/giphy.gif',
+		altText: 'Phoebe and Rachel jumping up and down with excitement',
+	},
+	good: {
+		message: 'Not too shabby!',
+		imageLink: 'https://media.giphy.com/media/peBPfhyCgKBYk/giphy.gif',
+		altText: 'Phoebe saying thank you',
+	},
+	bad: {
+		message: 'Ooh, better luck next time!',
+		imageLink: 'https://media.giphy.com/media/pFb97vzv7O1UI/giphy.gif',
+		altText: 'Phoebe saying this is new information',
+	}
+}
 
 

@@ -58,7 +58,17 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3 {
+header, main {
+  padding: 20px;
+}
+
+header {
+  background: white;
+  width: 60%;
+  margin: 3vh auto 0;
+}
+
+h1, h2 {
   text-align: center;
   font-family: sans-serif;
 }
@@ -84,13 +94,16 @@ h2 {
   font-size: 20px;
   display: block;
   text-align: center;
-  width: 70%;
   margin: 0 auto;
   padding: 40px 0;
 }
 
+.logo {
+  width: 85%;
+}
+
 .img {
-  max-width: 400px;
+  max-width: 360px;
   max-height: 350px;
 }
 
@@ -98,10 +111,8 @@ h2 {
   font-weight: bold;
 }
 
-
 fieldset {
   text-align: left;
-  /*margin-top: 40px; */
 }
 
 .screen-reader-text {
@@ -118,10 +129,10 @@ fieldset {
 }
 
 .content-wrapper {
-  height: 500px;/*478px;*/
+  height: 500px;
   background: white;
   padding-top: 24px;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -132,9 +143,9 @@ input {
   border-radius: 100%;
   border: 5px solid #ffffff;
   transition: 0.2s all;
-  margin: 0 20px 6px 0;
-  width: 24px;
-  height: 24px;
+  margin: 0 10px 5px 0;
+  width: 20px;
+  height: 20px;
 }
 input:checked {
   border: 8px solid #fca236;
@@ -155,10 +166,6 @@ input:checked {
 .option-wrapper:focus {
   transition: 500ms all;
   background: #00bcd4;
-}
-
-header, main {
-  padding: 20px;
 }
 
 .status-container {
@@ -183,8 +190,8 @@ button {
   border: none;
   background: #d9c3a3; /*#dfecec;*/
   display: block;
-  margin: 10px auto;
-  width: 80%;
+  margin: 20px auto;
+  width: 60%;
   padding: 20px;
   font-size: 20px;
   font-weight: bold;
@@ -200,7 +207,16 @@ button:focus {
   border: none;
 }
 
+@media screen and (min-height: 1300px) {
+  body {
+    padding-top: 12vh;
+  } 
+}
+
 @media screen and (max-width: 650px) {
+  header {
+    width: 80%;
+  }
   .status-container {
     width: 80%;
   }
@@ -209,13 +225,28 @@ button:focus {
   } 
   .content-wrapper {
     height: 520px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 450px) {
+  header,
+  .logo,
   .status-container,
-  .content-wrapper,
   .option-wrapper {
     width: 100%;
+  }
+  .img {
+    max-width: 380px;
+  }
+  button {
+    width: 100%;
+  }
+ }
+
+ @media screen and (max-width: 350px) {
+  .img {
+    max-width: 280px;
+    max-height: 300px;
   }
  }

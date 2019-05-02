@@ -42,18 +42,64 @@ function formatQuestion (questionCount) {
 	`;
 }
 
-function renderStart () {
-	$('.init-btn').on('click', (event) => {
-		$('.intro-screen').css('display', 'none');
-		$('.status-container').css('display', 'block');
-		$('.content-container').css('display', 'block');
-		renderQuestion();
-	})
+function createCorrectAnswerMessage (message, questionObj) {
+	return ` 
+	  <div class="content-wrapper">
+	    <h2>${message}</h2>
+	    <p> The correct answer was ${questionObj.correctAnswer}</p>
+	    <img class="img" src="${questionObj.imageLink}" alt="${questionObj.altText}" />
+	  </div>
+    <button role="button" class="next-question-btn">Next</button>`;
+}
+
+function createFinalScreenMessage (correctCount, incorrectCount, info) {
+	return `
+		<div class="content-wrapper">
+			<h2>${info.message}</h2>
+	    <p>Your score:</p>
+	    <ul>
+	      <li>${correctCount} correct </li>
+	      <li>${incorrectCount} incorrect </li>
+	    </ul>
+	    <img class="img" src="${info.imageLink}"  alt="${info.altText}" />
+		</div>
+    <button role="button" class="retake-quiz-btn">Take quiz again?</button>
+	`;
+}
+
+function resetAllCounts () {
+	count = 0;
+	correctAnswerCount = 0;
+	incorrectAnswerCount = 0;
 }
 
 function renderQuestion () {
 	$('.content-container').html(formatQuestion(count));
 	$('.question-count').html(questionArray[count].questionNum);
+}
+
+function renderCorrectAnswerMessage (questionObj) {
+	$('.correct-score').html(correctAnswerCount);
+	$('.content-container').html(createCorrectAnswerMessage('Great job!', questionObj));
+	nextClick();
+}
+
+function renderIncorrectAnswerMessage (questionObj) {
+	$('.incorrect-score').html(incorrectAnswerCount);
+	$('.content-container').html(createCorrectAnswerMessage('You got it wrong, too bad!', questionObj));
+	nextClick();
+}
+
+function renderFinalScreen () {
+	let message = {};
+	if (correctAnswerCount > 7) {
+		message = finalScreenInfo.great;
+	} else if (correctAnswerCount < 5) {
+		message = finalScreenInfo.bad;
+	} else {
+		message = finalScreenInfo.good;
+	}
+	$('.content-container').html(createFinalScreenMessage(correctAnswerCount, incorrectAnswerCount, message));
 }
 
 function submitAnswer () {
@@ -73,29 +119,15 @@ function submitAnswer () {
 		}
 		count++;
 	})
-}
-
-function createCorrectAnswerMessage (message, questionObj) {
-	return ` 
-	  <div class="content-wrapper">
-	    <h2>${message}</h2>
-	    <p> The correct answer was ${questionObj.correctAnswer}</p>
-	    <img class="img" src="${questionObj.imageLink}" alt="${questionObj.altText}" />
-	  </div>
-    <button role="button" class="next-question-btn">Next</button>`;
-
 } 
 
-function renderCorrectAnswerMessage (questionObj) {
-	$('.correct-score').html(correctAnswerCount);
-	$('.content-container').html(createCorrectAnswerMessage('Great job!', questionObj));
-	nextClick();
-}
-
-function renderIncorrectAnswerMessage (questionObj) {
-	$('.incorrect-score').html(incorrectAnswerCount);
-	$('.content-container').html(createCorrectAnswerMessage('You got it wrong, too bad!', questionObj));
-	nextClick();
+function renderStart () {
+	$('.init-btn').on('click', (event) => {
+		$('.intro-screen').css('display', 'none');
+		$('.status-container').css('display', 'block');
+		$('.content-container').css('display', 'block');
+		renderQuestion();
+	})
 }
 
 function nextClick () {
@@ -108,30 +140,11 @@ function nextClick () {
 		}
 	})
 }
- 
-function createFinalScreenMessage (correctCount, incorrectCount) {
-	return `
-		<div class="content-wrapper">
-			<h2>You're all done!</h2>
-	    <p>Your score:</p>
-	    <ul>
-	      <li>${correctCount} correct </li>
-	      <li>${incorrectCount} incorrect </li>
-	    </ul>
-	    <img class="img" src="https://media.giphy.com/media/peBPfhyCgKBYk/giphy.gif" alt="Phoebe saying thank you" />
-		</div>
-    <button role="button" class="retake-quiz-btn">Take quiz again?</button>
-
-	`;
-} 
-
-function renderFinalScreen () {
-	$('.content-container').html(createFinalScreenMessage(correctAnswerCount, incorrectAnswerCount));
-}
 
 function retakeQuiz () {
 	$('.content-container').on('click', '.retake-quiz-btn', function(event) {
 		event.preventDefault();
+		resetAllCounts();
 		$('.status-container').css('display', 'none');
 		$('.content-container').css('display', 'none');
 		$('.intro-screen').css('display', 'block');
