@@ -11,6 +11,7 @@ function formatQuestion (questionCount) {
     	<div class="content-wrapper">
 	    	<h2>${questionArray[questionCount].question}</h2>
 	      <fieldset>
+	      	<legend class="screen-reader-text">Options</legend>
 	        <label class="option-wrapper">  
 	          <input type="radio" name="option" 
 	            value="${questionArray[questionCount].options[0]}" id="option1" required >
@@ -55,15 +56,6 @@ function renderQuestion () {
 	$('.question-count').html(questionArray[count].questionNum);
 }
 
-// function addSelectedClass () {
-// 	$('.content-container').on('click', 'label', function(event) {
-// 		// event.preventDefault();
-// 		const selectedOption = event.currentTarget;
-// 		$(selectedOption).addClass('selected');
-// 	})
-// }
-
-
 function submitAnswer () {
 	$('.content-container').on('submit', 'form', function(event) {
 		event.preventDefault();
@@ -102,7 +94,7 @@ function renderCorrectAnswerMessage (questionObj) {
 
 function renderIncorrectAnswerMessage (questionObj) {
 	$('.incorrect-score').html(incorrectAnswerCount);
-	$('.content-container').html(createCorrectAnswerMessage('Too bad', questionObj));
+	$('.content-container').html(createCorrectAnswerMessage('You got it wrong, too bad!', questionObj));
 	nextClick();
 }
 
@@ -148,7 +140,6 @@ function retakeQuiz () {
 
 function handleQuiz () {
 	renderStart();
-	// addSelectedClass();
 	submitAnswer();
 	nextClick();
 	retakeQuiz();
