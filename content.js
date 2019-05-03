@@ -1,6 +1,6 @@
 'use strict';
 
-const questionArray = [
+const questions = [
 	{
 		questionNum: 1,
 		question: 'How many times did Ross get divorced?',
@@ -13,19 +13,21 @@ const questionArray = [
 		correctAnswer: '3',
 		imageLink: 'https://media.giphy.com/media/GvRdjwAffY4QE/giphy.gif',
 		altText: 'Ross talking about his divorces'
-	},{
+	},
+	{
 		questionNum: 2,
-		question: 'Which soap opera does Joey star in?',
+		question: 'Whose mom does Ross kiss?',
 		options: [
-			'General Hospital',
-			'The Young and The Restless',
-			'Days of Our Lives',
-			'The Bold and The Beautiful',
+			'Rachel',
+			'Joey',
+			'Chandler',
+			'Monica',
 		],
-		correctAnswer: 'Days of Our Lives',
-		imageLink: 'https://media.giphy.com/media/qLPxrfbOwoXII/giphy.gif',
-		altText: 'Joey as Dr. Drake Ramoray'
-	},{
+		correctAnswer: 'Chandler',
+		imageLink: 'https://media.giphy.com/media/c72MamejVBqNO/giphy.gif',
+		altText: 'Chandler closing a door'
+	},
+	{
 		questionNum: 3,
 		question: 'Which two actresses play Rachel’s sisters?',
 		options: [
@@ -37,7 +39,8 @@ const questionArray = [
 		correctAnswer: 'Reese Witherspoon & Christina Applegate',
 		imageLink: 'https://media.giphy.com/media/qNbeedVeNC1l6/giphy.gif',
 		altText: 'Rachel and sister slap fighting'
-	},{
+	},
+	{
 		questionNum: 4,
 		question: 'What does Phoebe legally change her name to?',
 		options: [
@@ -49,7 +52,8 @@ const questionArray = [
 		correctAnswer: 'Princess Consuela Bananahammock',
 		imageLink: 'https://media.giphy.com/media/Eox6eVHsAjhCw/giphy.gif',
 		altText: 'Phoebe calling herself Princess Consuela Bananahammock'
-	},{
+	},
+	{
 		questionNum: 5,
 		question: 'What does Mike say he will change his name to in response?',
 		options: [
@@ -61,19 +65,21 @@ const questionArray = [
 		correctAnswer: 'Crap Bag',
 		imageLink: 'https://media.giphy.com/media/xJEAqaLrAwZCU/giphy.gif',
 		altText: 'Phoebe introducing her husband Crap Bag'
-	},{
+	},
+	{
 		questionNum: 6,
-		question: 'Who gave Phoebe her cab?',
+		question: 'Which female character gets married first?',
 		options: [
-			'Her grandmother',
-			'Her mother',
-			'Her brother',
-			'Ross',
+			'Rachel',
+			'Phoebe',
+			'Monica',
+			'Ursula',
 		],
-		correctAnswer: 'Her grandmother',
-		imageLink: 'https://media.giphy.com/media/q3Zxb6mxoik5G/giphy.gif',
-		altText: 'Phoebe driving Ross around erratically in a cab'
-	},{
+		correctAnswer: 'Monica',
+		imageLink: 'https://media.giphy.com/media/FKkNhdOl9DKHC/giphy.gif',
+		altText: "Monica shouting that she's engaged"
+	},
+	{
 		questionNum: 7,
 		question: 'What is one thing Joey does not do?',
 		options: [
@@ -85,7 +91,8 @@ const questionArray = [
 		correctAnswer: 'Share food',
 		imageLink: 'https://media.giphy.com/media/zoVzl7KwyHU9G/giphy.gif',
 		altText: "Rachel saying Joey doesn't share food"
-	},{
+	},
+	{
 		questionNum: 8,
 		question: 'Where did Phoebe’s love interest David move for his job?',
 		options: [
@@ -97,7 +104,8 @@ const questionArray = [
 		correctAnswer: 'Minsk',
 		imageLink: 'https://media.giphy.com/media/xoLiDd7vxyvBK/giphy.gif',
 		altText: "David who moves to Minsk"
-	},{
+	},
+	{
 		questionNum: 9,
 		question: 'What is the occupation of the Ross lookalike (Russ) who Rachel dates?',
 		options: [
@@ -109,7 +117,8 @@ const questionArray = [
 		correctAnswer: 'Periodontist',
 		imageLink: 'https://media.giphy.com/media/gJEWhG3f3zszu/giphy.gif',
 		altText: 'Russ talking to Chandler'
-	},{
+	},
+	{
 		questionNum: 10,
 		question: 'What is the last line of the series?',
 		options: [
@@ -130,12 +139,12 @@ const finalScreenInfo = {
 		imageLink: 'https://media.giphy.com/media/31lPv5L3aIvTi/giphy.gif',
 		altText: 'Phoebe and Rachel jumping up and down with excitement',
 	},
-	good: {
+	average: {
 		message: 'Not too shabby!',
 		imageLink: 'https://media.giphy.com/media/peBPfhyCgKBYk/giphy.gif',
 		altText: 'Phoebe saying thank you',
 	},
-	bad: {
+	fail: {
 		message: 'Ooh, better luck next time!',
 		imageLink: 'https://media.giphy.com/media/pFb97vzv7O1UI/giphy.gif',
 		altText: 'Phoebe saying this is new information',

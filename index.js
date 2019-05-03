@@ -1,39 +1,38 @@
 'use strict';
 
-
 let count = 0,
 	correctAnswerCount = 0,
 	incorrectAnswerCount = 0;
 
-function formatQuestion (questionCount) {
+function createQAForm (questionCount) {
 	return `
     <form>
     	<div class="content-wrapper">
-	    	<h2>${questionArray[questionCount].question}</h2>
+	    	<h2>${questions[questionCount].question}</h2>
 	      <fieldset>
 	      	<legend class="screen-reader-text">Options</legend>
 	        <label class="option-wrapper">  
 	          <input type="radio" name="option" 
-	            value="${questionArray[questionCount].options[0]}" id="option1" required >
-	          ${questionArray[questionCount].options[0]}
+	            value="${questions[questionCount].options[0]}" id="option1" required >
+	          ${questions[questionCount].options[0]}
 	        </label>
 
 	        <label class="option-wrapper">
 	          <input type="radio" name="option" 
-	            value="${questionArray[questionCount].options[1]}" id="option2" required >
-	          ${questionArray[questionCount].options[1]}
+	            value="${questions[questionCount].options[1]}" id="option2" required >
+	          ${questions[questionCount].options[1]}
 	        </label>
 
 	        <label class="option-wrapper">
 	          <input type="radio" name="option" 
-	            value="${questionArray[questionCount].options[2]}" id="option3" required >
-	          ${questionArray[questionCount].options[2]}
+	            value="${questions[questionCount].options[2]}" id="option3" required >
+	          ${questions[questionCount].options[2]}
 	        </label>
 	        
 	        <label class="option-wrapper">
 	          <input type="radio" name="option" 
-	            value="${questionArray[questionCount].options[3]}" id="option4" required >
-	          ${questionArray[questionCount].options[3]}
+	            value="${questions[questionCount].options[3]}" id="option4" required >
+	          ${questions[questionCount].options[3]}
 	        </label>
 	      </fieldset>
 	    </div>
@@ -46,7 +45,7 @@ function createCorrectAnswerMessage (message, questionObj) {
 	return ` 
 	  <div class="content-wrapper">
 	    <h2>${message}</h2>
-	    <p> The correct answer was ${questionObj.correctAnswer}</p>
+	    <p> The correct answer was "${questionObj.correctAnswer}"</p>
 	    <img class="img" src="${questionObj.imageLink}" alt="${questionObj.altText}" />
 	  </div>
     <button role="button" class="next-question-btn">Next</button>`;
@@ -71,11 +70,9 @@ function resetAllCounts () {
 	count = 0;
 	correctAnswerCount = 0;
 	incorrectAnswerCount = 0;
-}
-
-function renderQuestion () {
-	$('.content-container').html(formatQuestion(count));
-	$('.question-count').html(questionArray[count].questionNum);
+	$('.question-count').html(1);
+	$('.correct-score').html(correctAnswerCount);
+	$('.incorrect-score').html(incorrectAnswerCount);
 }
 
 function renderCorrectAnswerMessage (questionObj) {
@@ -90,35 +87,21 @@ function renderIncorrectAnswerMessage (questionObj) {
 	nextClick();
 }
 
+function renderQuestion () {
+	$('.content-container').html(createQAForm(count));
+	$('.question-count').html(questions[count].questionNum);
+}
+
 function renderFinalScreen () {
 	let message = {};
 	if (correctAnswerCount > 7) {
 		message = finalScreenInfo.great;
 	} else if (correctAnswerCount < 5) {
-		message = finalScreenInfo.bad;
+		message = finalScreenInfo.fail;
 	} else {
-		message = finalScreenInfo.good;
+		message = finalScreenInfo.average;
 	}
 	$('.content-container').html(createFinalScreenMessage(correctAnswerCount, incorrectAnswerCount, message));
-}
-
-function submitAnswer () {
-	$('.content-container').on('submit', 'form', function(event) {
-		event.preventDefault();
-
-		const selection = $("input:checked").val(),
-			questionObj = questionArray[count],
-			correctAnswer = questionArray[count].correctAnswer;
-
-		if (selection === correctAnswer) {
-			correctAnswerCount++;
-			renderCorrectAnswerMessage(questionObj);
-		} else {
-			incorrectAnswerCount++;
-			renderIncorrectAnswerMessage(questionObj);
-		}
-		count++;
-	})
 } 
 
 function renderStart () {
@@ -130,10 +113,29 @@ function renderStart () {
 	})
 }
 
+function submitAnswer () {
+	$('.content-container').on('submit', 'form', function(event) {
+		event.preventDefault();
+
+		const selection = $("input:checked").val(),
+			questionObj = questions[count],
+			correctAnswer = questions[count].correctAnswer;
+
+		if (selection === correctAnswer) {
+			correctAnswerCount++;
+			renderCorrectAnswerMessage(questionObj);
+		} else {
+			incorrectAnswerCount++;
+			renderIncorrectAnswerMessage(questionObj);
+		}
+		count++;
+	})
+}
+
 function nextClick () {
 	$('.content-container').on('click', '.next-question-btn', function(event) {
 		event.preventDefault();
-		if (count < questionArray.length) {
+		if (count < questions.length) {
 			renderQuestion();
 		} else {
 			renderFinalScreen();

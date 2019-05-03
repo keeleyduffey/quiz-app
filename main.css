@@ -158,7 +158,7 @@ input:checked {
   display: block;
   width: 85%;
   color: #fff;
-  background: #555/*#dfecec*/;
+  background: #555;
 }
 
 .option-wrapper:hover,
@@ -188,7 +188,7 @@ li {
 
 button {
   border: none;
-  background: #d9c3a3; /*#dfecec;*/
+  background: #d9c3a3; 
   display: block;
   margin: 20px auto;
   width: 60%;
