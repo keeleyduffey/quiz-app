@@ -167,6 +167,7 @@ input:checked {
 .option-wrapper:focus {
   transition: 500ms all;
   background: #00bcd4;
+  cursor: pointer;
 }
 
 .status-container {
@@ -206,6 +207,7 @@ button:active,
 button:focus {
   background: #fca236;
   border: none;
+  cursor: pointer;
 }
 
 @media screen and (min-height: 1300px) {
