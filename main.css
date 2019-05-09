@@ -68,7 +68,7 @@ header {
   margin: 3vh auto 0;
 }
 
-h1, h2 {
+h1, h2, legend {
   text-align: center;
   font-family: sans-serif;
   letter-spacing: 1px;
@@ -79,7 +79,7 @@ h1 {
   padding: 40px;
 }
 
-h2 {
+h2, legend {
   font-size: 28px;
   margin: 20px;
 }

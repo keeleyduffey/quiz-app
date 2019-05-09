@@ -8,9 +8,8 @@ function createQAForm (questionCount) {
 	return `
     <form>
     	<div class="content-wrapper">
-	    	<h2>${questions[questionCount].question}</h2>
 	      <fieldset>
-	      	<legend class="screen-reader-text">Options</legend>
+	      	<legend>${questions[questionCount].question}</legend>
 	        <label class="option-wrapper">  
 	          <input type="radio" name="option" 
 	            value="${questions[questionCount].options[0]}" id="option1" required >
