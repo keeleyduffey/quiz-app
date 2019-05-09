@@ -1,2 +1,4 @@
 # quiz-app
-Short quiz about FRIENDS
+Ten question quiz about the FRIENDS television show
+
+Created using HTML5, CSS, and jQuery
